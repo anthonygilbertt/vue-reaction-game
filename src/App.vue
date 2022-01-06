@@ -1,5 +1,5 @@
 <template>
-  <h1>Vue Ninja Reaction Game</h1>
+  <h1>Vue Reaction Game</h1>
   <button @click="start" :disabled="isPlaying">Play</button> |
   <button @click="refreshPage">Play again</button>
 
