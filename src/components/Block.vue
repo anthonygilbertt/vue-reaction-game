@@ -1,45 +1,40 @@
 <template>
-  <!-- <p>Score: {{this.reactionTime}}</p>  -->
-  <p>Reaction Time: {{this.reactionTime}} ms</p>
+  <p>Reaction Time: {{ this.reactionTime }} ms</p>
+  <p>Score: {{ this.reactionTime }}</p>
 
-  <div class="block" v-if="showBlock" @click="stopTimer">
-  click me
-  </div>
-  
+  <div class="block" v-if="showBlock" @click="stopTimer">click me</div>
 </template>
 
 <script>
 export default {
-  props: ['delay'],
+  props: ["delay"],
   data() {
     return {
       showBlock: false,
       timer: null,
-      reactionTime: 0
-    }
+      reactionTime: 0,
+    };
   },
   mounted() {
     setTimeout(() => {
       this.showBlock = true;
       this.startTimer();
-    }, this.delay)
+    }, this.delay);
   },
 
   methods: {
-
     startTimer() {
       this.timer = setInterval(() => {
-        this.reactionTime += 10
-      }, 10)
+        this.reactionTime += 10;
+      }, 10);
     },
     stopTimer() {
       // stop timer when user clicks on the green square
       clearInterval(this.timer);
       console.log(this.reactionTime);
-    }
-
-  }
-}
+    },
+  },
+};
 </script>
 
 

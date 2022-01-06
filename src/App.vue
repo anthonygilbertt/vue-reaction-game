@@ -1,33 +1,28 @@
 <template>
   <h1>Vue Ninja Reaction Game</h1>
-  
-    <h3 v-if="showResults">this.reactionTime: {{this.reactionTime}} ms</h3>
-
-  
-  <button @click="start" :disabled="isPlaying">Play</button> | 
+  <button @click="start" :disabled="isPlaying">Play</button> |
   <button @click="refreshPage">Play again</button>
-  <Block v-if="isPlaying" v-bind:delay="delay" @end="endGame"/>
-  <!-- <Results /> -->
+
+  <Results v-bind:score="score" />
+  <Block v-if="isPlaying" :delay="delay" @end="endGame" />
+
+  <Results v-if="showResults" :score="score" />
 </template>
 
 <script>
-import Block from './components/Block.vue'
-// import Results from './components/Results.vue'
+import Block from "./components/Block.vue";
+import Results from "./components/Results.vue";
 
 export default {
-  name: 'App',
-  components: {
-    Block,
-    // Results
-  },
+  name: "App",
+  components: { Block, Results },
   data() {
     return {
       isPlaying: false,
       delay: null,
       score: null,
       showResults: false,
-      
-    }
+    };
   },
   methods: {
     start() {
@@ -41,13 +36,11 @@ export default {
       this.isPlaying = false;
       this.showResults = true;
     },
-    refreshPage(){
+    refreshPage() {
       location.reload();
-    }
-  }
-}
-
-
+    },
+  },
+};
 </script>
 
 <style>
@@ -58,5 +51,16 @@ export default {
   text-align: center;
   color: #444;
   margin-top: 60px;
+}
+html {
+  background-color: pink;
+  background-image: url("https://media.giphy.com/media/zW0n7AIWG4ka4/giphy.gif");
+  background-repeat: repeat;
+  background-size: cover;
+  background-size: 100%;
+}
+h1,
+p {
+  color: aqua;
 }
 </style>
